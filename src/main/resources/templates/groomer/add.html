@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strona Główna</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/addGroomer.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700"  rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Groomer</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <li><a href="/groomer/add">Strefa fryzjera</a></li>
+                <li><a href="#">Umów wizytę</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Signup <i class="fas fa-user-plus"></i></a></li>
+                <li><a href="#">Login <i class="fas fa-user"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Jesteś fryzjerem? Dodaj się do naszej bazy.</h2>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form action="/groomer/add" method="post">
+                <div class="form-group">
+                    <label class="labels">Jak mamy się do Ciebie zwracać?</label>
+                    <input type="text" class="form-control" name="name" placeholder="np. Jan Kowalski">
+                </div>
+
+                <div class="form-group">
+                    <label class="labels">Podstawowe informacje:</label>
+                    <textarea name="profile" class="form-control" rows="5" placeholder="O mnie..."></textarea>
+                </div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
