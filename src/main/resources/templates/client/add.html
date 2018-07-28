@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Strona Główna</title>
+    <title>Nowy klient</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link th:href="@{/css/addGroomer.css}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700"  rel="stylesheet">
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h2>Dodaj się do naszej bazy.</h2>
+            <h3>Chcesz umówic psa na wizytę? Dodaj się do naszej bazy.</h3>
         </div>
     </div>
 </div>
@@ -42,17 +42,32 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form action="/groomer/add" method="post">
+            <form action="/client/add" method="post">
                 <div class="form-group">
-                    <label class="labels">Jak mamy się do Ciebie zwracać?</label>
+                    <label>Jak mamy się do Ciebie zwracać?</label>
                     <input type="text" class="form-control" name="name" placeholder="np. Jan Kowalski">
                 </div>
-
                 <div class="form-group">
-                    <label class="labels">Podstawowe informacje:</label>
-                    <textarea name="profile" class="form-control" rows="5" placeholder="O mnie..."></textarea>
+                    <label>Imię psa:</label>
+                    <input type="text" class="form-control" name="dogName" placeholder="np. Reksio">
                 </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>
+                <div class="form-group">
+                    <label>Rasa:</label>
+                    <input type="text" class="form-control" name="breed" placeholder="np. Shih Tzu / terrier / mieszaniec...">
+                </div>
+                <div class="form-group">
+                    <label>Rodzaj sierści:</label>
+                    <input type="text" class="form-control" name="coatType" placeholder="np. prosta, gładka">
+                </div>
+                <div class="form-group">
+                    <label for="sel1">Wielkość psa:</label>
+                    <select class="form-control" id="sel1" name="dogSize">
+                        <option>Mały</option>
+                        <option>Średni</option>
+                        <option>Duży</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>
             </form>
         </div>
     </div>

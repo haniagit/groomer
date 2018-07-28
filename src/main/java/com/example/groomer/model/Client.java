@@ -1,9 +1,6 @@
 package com.example.groomer.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Client {
@@ -13,8 +10,13 @@ public class Client {
     private Integer id;
     private String name;
     private String dogName;
+    private String breed;
     private String coatType;
-    private DogSize dogSize;
+    private String dogSize;
+
+    @OneToOne
+    private Groomer groomer;
+
 
     public String getName() {
         return name;
@@ -40,11 +42,28 @@ public class Client {
         this.coatType = coatType;
     }
 
-    public DogSize getDogSize() {
+    public String getDogSize() {
         return dogSize;
     }
 
-    public void setDogSize(DogSize dogSize) {
+    public void setDogSize(String dogSize) {
         this.dogSize = dogSize;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getBreed() {
+        return breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
 }

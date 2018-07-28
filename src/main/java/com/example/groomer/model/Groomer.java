@@ -1,9 +1,7 @@
 package com.example.groomer.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Groomer {
@@ -13,6 +11,10 @@ public class Groomer {
     private Integer id;
     private String name;
     private String profile;
+
+    @OneToMany (mappedBy = "groomer")
+    List<Client> clients;
+
 
     public Integer getId() {
         return id;
