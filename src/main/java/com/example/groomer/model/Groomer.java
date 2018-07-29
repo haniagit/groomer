@@ -1,6 +1,7 @@
 package com.example.groomer.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,7 +14,7 @@ public class Groomer {
     private String profile;
 
     @OneToMany (mappedBy = "groomer")
-    List<Client> clients;
+    private List<Client> clients = new ArrayList<>();
 
 
     public Integer getId() {
@@ -38,5 +39,18 @@ public class Groomer {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 }

@@ -9,6 +9,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
+    private String contact;
     private String dogName;
     private String breed;
     private String coatType;
@@ -66,4 +67,24 @@ public class Client {
         this.breed = breed;
     }
 
+    @Override
+    public String toString() {
+        return getDogName() + " rasa: " + getBreed();
+    }
+
+    public Groomer getGroomer() {
+        return groomer;
+    }
+
+    public void setGroomer(Groomer groomer) {
+        this.groomer = groomer;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
 }

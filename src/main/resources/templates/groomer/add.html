@@ -4,8 +4,9 @@
     <title>Strona Główna</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link th:href="@{/css/addGroomer.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700"  rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 </head>
 <body>
@@ -17,13 +18,12 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-nav-demo">
             <ul class="nav navbar-nav">
-                <li><a href="/groomer/add">Strefa fryzjera</a></li>
-                <li><a href="#">Umów wizytę</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/groomer/add">Jestem fryzjerem</a></li>
+                <li><a href="/client/add">Jestem klientem</a></li>
+                <li><a href="/groomers">Fryzjerzy</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Signup <i class="fas fa-user-plus"></i></a></li>
-                <li><a href="#">Login <i class="fas fa-user"></i></a></li>
+                <li><a href="#">Admin <i class="fas fa-user"></i></a></li>
             </ul>
         </div>
     </div>
@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h2>Dodaj się do naszej bazy.</h2>
+            <h3>Dodaj się do naszej bazy.</h3>
         </div>
     </div>
 </div>
@@ -42,17 +42,18 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form action="/groomer/add" method="post">
+            <form th:action="@{/groomer/add}" th:object="${groomer}" method="post">
+                <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
-                    <label class="labels">Jak mamy się do Ciebie zwracać?</label>
-                    <input type="text" class="form-control" name="name" placeholder="np. Jan Kowalski">
+                    <label>Jak mamy się do Ciebie zwracać?</label>
+                    <input type="text" class="form-control" th:field="*{name}" placeholder="np. Jan Kowalski" required/>
                 </div>
-
                 <div class="form-group">
-                    <label class="labels">Podstawowe informacje:</label>
-                    <textarea name="profile" class="form-control" rows="5" placeholder="O mnie..."></textarea>
+                    <label>Podstawowe informacje:</label>
+                    <textarea th:field="*{profile}" class="form-control" rows="3" placeholder="O mnie..." required>
+                    </textarea>
                 </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>
+                <p><input type="submit" class="btn btn-success" value="Dodaj"/>
             </form>
         </div>
     </div>

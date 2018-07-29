@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Strona Główna</title>
+    <title>Fryzjerzy</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link th:href="@{/css/home.css}" rel="stylesheet">
@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 </head>
-<body>
+<body style="background:darkgrey">
 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -31,15 +31,32 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-12">
-            <div id="content">
-                <h1>Grrroomer</h1>
-                <h3>Psi fryzjer</h3>
-            </div>
+        <div class="col-xs-12">
+            <h3>Baza naszych fryzjerów</h3>
         </div>
     </div>
 </div>
+<br>
+<br>
 
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Fryzjer</th>
+                    <th>Informacje</th>
+                </tr>
+                </thead>
+                <tr th:each="groomer : ${groomers}">
+                    <td th:text="${groomer.name}"></td>
+                    <td th:text="${groomer.profile}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

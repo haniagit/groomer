@@ -4,8 +4,9 @@
     <title>Nowy klient</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link th:href="@{/css/addGroomer.css}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700"  rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 </head>
 <body>
@@ -32,7 +33,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h3>Chcesz umówic psa na wizytę? Dodaj się do naszej bazy.</h3>
+            <h3>Chcesz umówic psa na wizytę? Wypełnij poniższy formularz, wybrany fryzjer skontatkuje się z Tobą w celu potwierdzenia
+                terminu wizyty.</h3>
         </div>
     </div>
 </div>
@@ -42,36 +44,66 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form action="/client/add" method="post">
+            <form th:action="@{/client/add}" th:object="${client}" method="post">
+                <input type="hidden" th:field="*{id}"/>
                 <div class="form-group">
                     <label>Jak mamy się do Ciebie zwracać?</label>
-                    <input type="text" class="form-control" name="name" placeholder="np. Jan Kowalski">
+                    <input type="text" th:field="*{name}" class="form-control" placeholder="np. Jan Kowalski" required/>
+                </div>
+                <div class="form-group">
+                    <label>Kontakt do Ciebie:</label>
+                    <input type="text" th:field="*{contact}" class="form-control" placeholder="telefon /  e-mail" required/>
                 </div>
                 <div class="form-group">
                     <label>Imię psa:</label>
-                    <input type="text" class="form-control" name="dogName" placeholder="np. Reksio">
+                    <p><input type="text" th:field="*{dogName}" class="form-control" placeholder="np. Reksio" required/>
                 </div>
                 <div class="form-group">
-                    <label>Rasa:</label>
-                    <input type="text" class="form-control" name="breed" placeholder="np. Shih Tzu / terrier / mieszaniec...">
+                <label>Rasa:</label>
+                <p></p><input type="text" th:field="*{breed}" class="form-control" placeholder="np. Shih Tzu / terrier / mieszaniec" required/>
                 </div>
                 <div class="form-group">
-                    <label>Rodzaj sierści:</label>
-                    <input type="text" class="form-control" name="coatType" placeholder="np. prosta, gładka">
+                <label>Rodzaj sierści:</label>
+                <input type="text" th:field="*{coatType}" class="form-control" placeholder="np. szorstka / długa, gładka" required/>
                 </div>
                 <div class="form-group">
-                    <label for="sel1">Wielkość psa:</label>
-                    <select class="form-control" id="sel1" name="dogSize">
-                        <option>Mały</option>
-                        <option>Średni</option>
-                        <option>Duży</option>
-                    </select>
+                <label>Wielkość psa:</label>
+                <select th:field="*{dogSize}" class="form-control">
+                    <option th:value="dogSize">Mały</option>
+                    <option th:value="dogSize">Średni</option>
+                    <option th:value="dogSize">Duży</option>
+                </select>
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>
+                <div class="form-group">
+                    <label>Wybierz fryzjera:</label>
+                <select th:field="*{groomer}" name="groomer.id" class="form-control">
+                    <option th:each="groomer : ${groomer}"
+                            th:value="${groomer.id}"
+                            th:text="${groomer}">Fryzjer
+                    </option>
+                </select>
+                </div>
+
+                <p><input type="submit" class="btn btn-success" value="Dodaj"/>
             </form>
         </div>
     </div>
 </div>
+
+
+
+<!--<select th:field="*{groomer}" name="groomer.id">-->
+<!--<option th:each="groomer : ${groomer}"-->
+<!--th:value="${groomer.id}"-->
+<!--th:text="${groomer}">Fryzjer</option>-->
+<!--</select>-->
+
+<!--</div>-->
+<!--<button type="submit" class="btn btn-lg btn-primary btn-animated">Dodaj</button>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
 
 
 </body>

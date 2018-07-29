@@ -6,10 +6,8 @@ import com.example.groomer.model.Client;
 import com.example.groomer.model.Groomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class AppController {
@@ -21,30 +19,41 @@ public class AppController {
     private ClientDao clientDao;
 
     @GetMapping("/")
-    public String homePage(){
+    public String homePage() {
         return "home";
     }
 
     @GetMapping("groomer/add")
-    public String addGroomer(){
+    public String addGroomer(ModelMap modelMap) {
+        modelMap.addAttribute("groomer", new Groomer());
         return "groomer/add";
     }
 
     @PostMapping("groomer/add")
-    public String createGroomer(@ModelAttribute Groomer groomer){
+    public String createGroomer(@ModelAttribute Groomer groomer) {
         groomerDao.save(groomer);
         return "success";
     }
 
     @GetMapping("client/add")
-    public String addClient(){
+    public String addClient(ModelMap modelMap) {
+        modelMap.put("client", new Client());
+        modelMap.put("groomer", groomerDao.findAll());
         return "client/add";
     }
 
     @PostMapping("client/add")
-    public String createClient(@ModelAttribute Client client){
+    public String createClient(@ModelAttribute Client client, ModelMap modelMap) {
         clientDao.save(client);
+        modelMap.put("clients", client);
         return "success";
     }
 
+    @GetMapping("groomers")
+    public String showAllGroomers(ModelMap modelMap){
+        modelMap.addAttribute("groomers", groomerDao.findAll());
+        return "groomers";
+    }
+
 }
+
