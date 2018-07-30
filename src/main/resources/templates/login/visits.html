@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Strona Główna</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/addGroomer.css}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Groomer</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav">
+                <li><a href="/groomer/add">Jestem fryzjerem</a></li>
+                <li><a href="/client/add">Jestem klientem</a></li>
+                <li><a href="/groomers">Fryzjerzy</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Admin <i class="fas fa-user"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Zarezerwowane wizyty</h3>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Fryzjer</th>
+                    <th>Klient</th>
+                    <th>Imię psa</th>
+                    <th>Wielkość psa</th>
+                    <th>Rodzaj sierści</th>
+                    <th>Kontakt do klienta</th>
+                </tr>
+                </thead>
+                <tr th:each="client : ${client}">
+                    <td th:text="${client.groomer}"></td>
+                    <td th:text="${client.name}"></td>
+                    <td th:text="${client.dogName}"></td>
+                    <td th:text="${client.dogSize}"></td>
+                    <td th:text="${client.coatType}"></td>
+                    <td th:text="${client.contact}"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

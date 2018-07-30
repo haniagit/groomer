@@ -6,6 +6,7 @@ import com.example.groomer.model.Client;
 import com.example.groomer.model.Groomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,6 +54,12 @@ public class AppController {
     public String showAllGroomers(ModelMap modelMap){
         modelMap.addAttribute("groomers", groomerDao.findAll());
         return "groomers";
+    }
+
+    @GetMapping("/login/visits")
+    public String visits(ModelMap modelMap){
+        modelMap.put("client", clientDao.findAll());
+        return "login/visits";
     }
 
 }
