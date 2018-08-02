@@ -45,35 +45,29 @@
         <div class="col-xs-12">
             <form th:action="@{/client/add}" th:object="${client}" method="post">
                 <input type="hidden" th:field="*{id}"/>
-                <div class="form-group">
+
                     <label>Jak mamy się do Ciebie zwracać?</label>
                     <input type="text" th:field="*{name}" class="form-control" placeholder="np. Jan Kowalski" required/>
-                </div>
-                <div class="form-group">
+
                     <label>Kontakt do Ciebie:</label>
                     <input type="text" th:field="*{contact}" class="form-control" placeholder="telefon /  e-mail" required/>
-                </div>
-                <div class="form-group">
+
                     <label>Imię psa:</label>
                     <p><input type="text" th:field="*{dogName}" class="form-control" placeholder="np. Reksio" required/>
-                </div>
-                <div class="form-group">
+
                 <label>Rasa:</label>
                 <p></p><input type="text" th:field="*{breed}" class="form-control" placeholder="np. Shih Tzu / terrier / mieszaniec" required/>
-                </div>
-                <div class="form-group">
+
                 <label>Rodzaj sierści:</label>
                 <input type="text" th:field="*{coatType}" class="form-control" placeholder="np. szorstka / długa, gładka" required/>
-                </div>
-                <div class="form-group">
+
                 <label>Wielkość psa:</label>
                 <select th:field="*{dogSize}" class="form-control">
                     <option th:value="dogSize">Mały</option>
                     <option th:value="dogSize">Średni</option>
                     <option th:value="dogSize">Duży</option>
                 </select>
-                </div>
-                <div class="form-group">
+
                     <label>Wybierz fryzjera:</label>
                 <select th:field="*{groomer}" name="groomer.id" class="form-control">
                     <option th:each="groomer : ${groomer}"
@@ -81,7 +75,6 @@
                             th:text="${groomer}">Fryzjer
                     </option>
                 </select>
-                </div>
 
                 <p><input type="submit" class="btn btn-success" value="Dodaj"/>
             </form>
