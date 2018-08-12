@@ -12,6 +12,7 @@ public class Groomer {
     private Integer id;
     private String name;
     private String profile;
+    private String location;
 
     @OneToMany (mappedBy = "groomer")
     private List<Client> clients = new ArrayList<>();
@@ -41,9 +42,17 @@ public class Groomer {
         this.profile = profile;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     @Override
     public String toString() {
-        return getName();
+        return getName() + "(" + getLocation() + ")mymyslmy";
     }
 
     public List<Client> getClients() {

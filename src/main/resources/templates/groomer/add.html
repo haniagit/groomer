@@ -11,23 +11,9 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <div class="navbar-header">
-            <a href="/" class="navbar-brand">Groomer</a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-nav-demo">
-            <ul class="nav navbar-nav">
-                <li><a href="/groomer/add">Jestem fryzjerem</a></li>
-                <li><a href="/client/add">Jestem klientem</a></li>
-                <li><a href="/groomers">Fryzjerzy</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Admin <i class="fas fa-user"></i></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--navbar moved to fragments/navbar-->
+<div th:replace="fragments/navbar :: navbar"></div>
+
 
 <div class="container">
     <div class="row">
@@ -44,9 +30,13 @@
         <div class="col-xs-12">
             <form th:action="@{/groomer/add}" th:object="${groomer}" method="post">
                 <input type="hidden" th:field="*{id}"/>
+                <!--<div class="form-group">-->
+                <label>Jak mamy się do Ciebie zwracać?</label>
+                <input type="text" class="form-control" th:field="*{name}" placeholder="np. Jan Kowalski" required/>
+                <!--</div>-->
                 <div class="form-group">
-                    <label>Jak mamy się do Ciebie zwracać?</label>
-                    <input type="text" class="form-control" th:field="*{name}" placeholder="np. Jan Kowalski" required/>
+                    <label>W jakim mieście przyjmujesz zlecenia?</label>
+                    <input type="text" class="form-control" th:field="*{location}" placeholder="np. Warszawa" required/>
                 </div>
                 <div class="form-group">
                     <label>Podstawowe informacje:</label>
